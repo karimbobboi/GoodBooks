@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodBooks.CreateAccountPage">
+    <Grid Margin="30,30,30,0" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout
+            Grid.Row="0"
+            HorizontalOptions="Start">
+            <Label
+                FontAttributes="Bold"
+                FontSize="30"
+                Text="Create account" />
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="1">
+            <Label
+                FontSize="20"
+                Text="First Name"/>
+            <Entry
+                x:Name="fname"
+                Text=""
+                FontSize="15"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout 
+            Grid.Row="2">
+            <Label
+                FontSize="20"
+                Text="Last Name"/>
+            <Entry
+                x:Name="lname"
+                Text=""
+                FontSize="15"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout 
+            Grid.Row="4">
+            <Label
+                FontSize="20"
+                Text="Email address"/>
+            <Entry
+                x:Name="email"
+                FontSize="15" Text=""
+                Keyboard="Email"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout 
+            Grid.Row="3" >
+            <Label
+                FontSize="20"
+                Text="Username"/>
+            <Entry Text=""
+                x:Name="username" FontSize="15"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout 
+            Grid.Row="5" >
+            <Label
+                FontSize="20"
+                Text="Password"/>
+            <Entry
+                x:Name="password" FontSize="15"
+                Text="" Keyboard="Email" IsPassword="True"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="6" >
+            <Button Margin="0,20,0,0" Clicked="RegisterCompleteBtn_Clicked"
+                Text="Register"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

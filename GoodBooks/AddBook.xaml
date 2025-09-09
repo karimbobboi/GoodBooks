@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GoodBooks"
+             x:Class="GoodBooks.AddBook"
+             Title="Add Book">
+    <ContentPage.Resources>
+        <local:InverseBoolConverter x:Key="BoolConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+    <VerticalStackLayout>
+        <VerticalStackLayout
+            Margin="0,180,0,0"
+            Padding="30,0,30,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            x:Name="InitialAcctPage"
+            IsVisible="{Binding SignedIn, Converter={StaticResource BoolConverter}}">
+            <Label 
+                Text="Welcome to GoodBooks!"
+                Padding="0,0,0,10"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label 
+                Text="It looks like you haven't signed in yet. We encourage you to do so to access the complete GoodBooks experience!"
+                Padding="0,0,0,10"
+                FontSize="Small"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Button
+                x:Name="SignInBtn"
+                Text="Sign in"
+                Clicked="SignInBtn_Clicked"
+                HorizontalOptions="FillAndExpand" />
+        </VerticalStackLayout>
+
+        <Grid x:Name="mainAcctPage" Margin="20,20,20,0" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" FontSize="20" Text="Images" FontAttributes="Bold"/>
+            <Grid HeightRequest="120" BackgroundColor="Transparent" Grid.Row="0" Margin="0,30,0,0" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame x:Name="img1" BorderColor="White" Grid.Column="0" Padding="0,10"
+                   CornerRadius="10">
+                    <Button Grid.Column="0" WidthRequest="50" HeightRequest="50" TextColor="{StaticResource Primary}"
+                            CornerRadius="25" Clicked="ImageButton_Clicked"
+                            HorizontalOptions="Center" Text="+" FontSize="35" Padding="0" Margin="0"/>
+                </Frame>
+                <Frame x:Name="img2" BorderColor="White" Grid.Column="1" Padding="0,10"
+                   CornerRadius="10">
+                    <Button Grid.Column="0" WidthRequest="50" HeightRequest="50" TextColor="{StaticResource Primary}"
+                            CornerRadius="25" Clicked="ImageButton_Clicked"
+                            HorizontalOptions="Center" Text="+" FontSize="35" Padding="0" Margin="0"/>
+                </Frame>
+                <Frame x:Name="img3" BorderColor="White" Grid.Column="2" Padding="0,10"
+                   CornerRadius="10">
+                    <Button Grid.Column="0" WidthRequest="50" HeightRequest="50" Clicked="ImageButton_Clicked"
+                            CornerRadius="25" TextColor="{StaticResource Primary}"
+                            HorizontalOptions="Center" Text="+" FontSize="35" Padding="0" Margin="0"/>
+                    
+                </Frame>
+            </Grid>
+
+            <VerticalStackLayout Grid.Row="1">
+                <Label FontSize="20" Text="Title" FontAttributes="Bold"/>
+                <Entry x:Name="bookName" FontSize="16" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Label FontSize="20" Text="Author" FontAttributes="Bold"/>
+                <Entry x:Name="bookAuthor" FontSize="16" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label FontSize="20" Text="Publisher" FontAttributes="Bold"/>
+                <Entry x:Name="bookPublisher" FontSize="16" />
+            </VerticalStackLayout>
+            <Grid Grid.Row="4" ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label FontSize="20" Text="Price" FontAttributes="Bold"/>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label FontSize="20" Text="£" VerticalOptions="Center" FontAttributes="Bold"/>
+                        <Entry x:Name="bookPrice" FontSize="16" BackgroundColor="White" Keyboard="Numeric"
+                            Placeholder=" Enter price  " VerticalOptions="CenterAndExpand"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="0">
+                    <Label FontSize="20" Text="Year" FontAttributes="Bold"/>
+                    <Entry x:Name="bookYear" FontSize="16" BackgroundColor="White" Keyboard="Numeric"
+                            Placeholder=" Enter Year" VerticalOptions="Center"
+                           Completed="yearEntry_Completed"/>
+                </VerticalStackLayout>
+            </Grid>
+            <HorizontalStackLayout Grid.Row="5" Spacing="70">
+                <VerticalStackLayout >
+                    <Label FontSize="20" Text="Language" FontAttributes="Bold"/>
+                    <Picker x:Name="bookLanguage" FontSize="16"
+                        VerticalOptions="CenterAndExpand" SelectedIndexChanged="languagePicker_SelectedIndexChanged"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout >
+                    <Label FontSize="20" Text="Genre" FontAttributes="Bold"/>
+                    <Picker x:Name="bookGenre" FontSize="16" VerticalOptions="CenterAndExpand"
+                            SelectedIndexChanged="genrePicker_SelectedIndexChanged"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+            <Button Text="Add Book" Grid.Row="6" HeightRequest="40" Clicked="AddButton_Clicked"/>
+        </Grid>
+        
+    </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>

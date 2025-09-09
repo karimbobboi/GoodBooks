@@ -1,0 +1,4 @@
+images/crime_and_punishment;images/crime_and_punishment
+images/name_of_the_rose;images/name_of_the_rose
+images/one_hundred_years;images/one_hundred_years
+raw/aboutassets;raw/AboutAssets

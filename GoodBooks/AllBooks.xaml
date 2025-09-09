@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodBooks.AllBooks"
+             Title="Book listings">
+    <VerticalStackLayout>
+        <ListView x:Name="booksList" Margin="10,20,10,0" RowHeight="80" BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="300">
+                        <Grid ColumnSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="3"
+                                Source="{Binding images[0]}"
+                                Aspect="AspectFit"
+                                HeightRequest="80"
+                                WidthRequest="60" />
+                            <Label Grid.Column="1" x:Name="bkName"
+                                Text="{Binding name}"
+                                FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding author}"
+                                FontAttributes="Italic" />
+                            <HorizontalStackLayout Grid.Row="2" Spacing="40"
+                                 Grid.Column="1">
+                                <Label
+                                    Text="{Binding price, StringFormat='£{0:F2}'}"
+                                    FontAttributes="Bold" VerticalOptions="End" VerticalTextAlignment="End"/>
+                                <Button Text="Remove" TextColor="White" FontSize="12" Padding="10,0,10,0"
+                                    HorizontalOptions="End" Clicked="RemoveBtn_Clicked"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

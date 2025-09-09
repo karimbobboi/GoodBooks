@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodBooks.SearchPage"
+             Title="Search">
+    <VerticalStackLayout>
+        <SearchBar TextChanged="SearchBar_TextChanged" BackgroundColor="{StaticResource Primary}" TextColor="{StaticResource Secondary}"/>
+        <ListView x:Name="searchResults" ItemSelected="searchResults_ItemSelected" Margin="0,20,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding im}" Text="{Binding name}" Detail="{Binding author}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

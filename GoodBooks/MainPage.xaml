@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodBooks.MainPage"
+             Title="Home">
+
+    <ScrollView Margin="0,0,0,5">
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Row="0" BackgroundColor="{StaticResource Secondary}">
+                <Grid Margin="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Featured Books" FontSize="17"
+                        FontAttributes="Bold" TextColor="{StaticResource Primary}"/>
+                     <Button Grid.Column="2" x:Name="signin" Text="Sign in" TextColor="{StaticResource Primary}"
+                        HorizontalOptions="End" WidthRequest="80" Clicked="SignIn_Clicked"
+                        Padding="10,5,10,5" BackgroundColor="#2C8C39"/>
+                    <Button Grid.Column="2" x:Name="signout" Text="Sign out" TextColor="{StaticResource Primary}"
+                        HorizontalOptions="End" WidthRequest="80" Clicked="SignOut_Clicked"
+                        Padding="10,5,10,5" BackgroundColor="#BF211E"/>
+                </Grid>
+                <CarouselView x:Name="all" Margin="0,0,0,0" Loop="False"
+                    IndicatorView="indicatorView" BackgroundColor="Transparent"
+                    EmptyView="No book in database.">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                            SnapPointsType="MandatorySingle"
+                            SnapPointsAlignment="Start" />
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="Transparent" RowSpacing="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <ImageButton Grid.Row="1" Source="{Binding images[0]}" Clicked="ImageButton_Clicked"
+                                    HeightRequest="300" WidthRequest="200"
+                                    VerticalOptions="Center" Aspect="AspectFit"/>
+                                
+                                <StackLayout Grid.Row="2" BackgroundColor="Transparent" VerticalOptions="End" Margin="20,0,20,0">
+                                    <Label x:Name="bkName" Text="{Binding name}" FontSize="13"
+                                        TextColor="{StaticResource Primary}" FontAttributes="Bold" VerticalTextAlignment="End"/>
+                                    <Label x:Name="bkAuthor" Text="{Binding author}" FontSize="12"
+                                        TextColor="{StaticResource Primary}" VerticalTextAlignment="End"/>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="indicatorView"
+                   IndicatorColor="LightGray"
+                   SelectedIndicatorColor="DarkGray"
+                   HorizontalOptions="Center" VerticalOptions="End"/>
+            </VerticalStackLayout>
+
+            <Label Text="Popular on GoodBooks" Grid.Row="1" Margin="20,10,0,0"
+                FontAttributes="Bold" FontSize="17"/>
+            <CarouselView x:Name="popular" Grid.Row="1" Margin="20,40,20,0" Loop="False"
+                BackgroundColor="Transparent"
+                EmptyView="No book in database.">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                        SnapPointsType="MandatorySingle"
+                        SnapPointsAlignment="Start" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="5" BorderColor="{StaticResource Gray300}" Margin="0,0,0,0">
+                            <Grid ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="3"
+                                    Source="{Binding images[0]}"
+                                    Aspect="AspectFit"/>
+                                <Label Grid.Column="1" x:Name="bkName"
+                                    Text="{Binding name}"
+                                    FontAttributes="Bold" />
+                                <Label Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding author}"
+                                    FontAttributes="Italic" />
+                                <Label Grid.Row="2" Grid.Column="1"
+                                    Text="{Binding price, StringFormat='£{0:F2}'}"
+                                    FontAttributes="Bold" VerticalOptions="End" VerticalTextAlignment="End"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <Label Text="Trending Comedy Books" Grid.Row="2" Margin="20,10,0,0"
+                FontAttributes="Bold" FontSize="17"/>
+            <CarouselView x:Name="genre" Grid.Row="2" Margin="20,40,20,0" Loop="False"
+                BackgroundColor="Transparent"
+                EmptyView="No book in database.">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                        SnapPointsType="MandatorySingle"
+                        SnapPointsAlignment="Start" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="5" BorderColor="{StaticResource Gray300}" Margin="0,0,0,0">
+                            <Grid ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="3"
+                                    Source="{Binding images[0]}"
+                                    Aspect="AspectFit"/>
+                                <Label Grid.Column="1" x:Name="bkName"
+                                    Text="{Binding name}"
+                                    FontAttributes="Bold" />
+                                <Label Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding author}"
+                                    FontAttributes="Italic" />
+                                <Label Grid.Row="2" Grid.Column="1"
+                                    Text="{Binding price, StringFormat='£{0:F2}'}"
+                                    FontAttributes="Bold" VerticalOptions="End" VerticalTextAlignment="End"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

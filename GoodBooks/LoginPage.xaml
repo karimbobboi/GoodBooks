@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoodBooks.LoginPage">
+    <Grid Margin="30,20,30,0" RowSpacing="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout
+            Grid.Row="0"
+            HorizontalOptions="Start">
+            <Label
+                FontAttributes="Bold"
+                FontSize="30"
+                Text="Log in" />
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                Padding="0,10,0,5"
+                FontSize="20"
+                Text="Email Address"/>
+            <Entry
+                x:Name="email"
+                FontSize="15" Text=""
+                Keyboard="Email"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="2"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                Padding="0,10,0,5"
+                FontSize="20"
+                Text="Password"/>
+            <Entry
+                x:Name="password"
+                FontSize="15" Text=""
+                IsPassword="true"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,30,0,0"
+            Grid.Row="3"
+             HorizontalOptions="FillAndExpand">
+            <Button
+                Clicked="LoginButton_Clicked"
+                Text="Sign in"
+                FontSize="20"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Margin="0,10,0,0"
+            Grid.Row="4" 
+             HorizontalOptions="FillAndExpand">
+            <Label
+                FontSize="14"
+                Text="Don't have a GoodBooks account?"/>
+            
+            <Button
+                Clicked="RegisterButton_Clicked"
+                Text="Create account"
+                FontSize="20"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
