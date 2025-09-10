@@ -1,2 +1,6 @@
 /.DS_Store
 /.vscode
+GoodBooks/bin/
+GoodBooks/obj/Debug/
+GoodBooks/obj/.cache/com.companyname.goodbooks.flag
+GoodBooks/obj/Debug/net6.0-maccatalyst/GoodBooks.AssemblyInfoInputs.cache
